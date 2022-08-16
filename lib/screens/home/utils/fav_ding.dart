@@ -12,5 +12,8 @@ class FavDing {
   void dispose() => _player.dispose();
 
   /// Plays the ding sound.
-  Future<void> play() => _player.play(_audioSource);
+  Future<void> play() {
+    _player.seek(const Duration(seconds: 0));
+    return _player.play(_audioSource);
+  }
 }
