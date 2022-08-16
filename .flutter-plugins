@@ -1,4 +1,10 @@
 # This is a generated file; do not edit or check into version control.
+audioplayers=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-1.0.1/
+audioplayers_android=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers_android-1.0.1/
+audioplayers_darwin=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers_darwin-1.0.1/
+audioplayers_linux=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers_linux-1.0.0/
+audioplayers_web=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers_web-1.0.0/
+audioplayers_windows=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers_windows-1.0.0/
 flutter_local_notifications=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-9.7.1/
 flutter_plugin_android_lifecycle=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7/
 google_maps_flutter=/Users/ahmad/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-2.1.10/

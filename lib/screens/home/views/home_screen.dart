@@ -1,13 +1,14 @@
 import 'package:challenge/api/utils/online_api.dart';
+import 'package:challenge/app/services/notification_service.dart';
 import 'package:challenge/screens/home/bloc/orders_bloc.dart';
+import 'package:challenge/screens/home/utils/fav_ding.dart';
 import 'package:challenge/screens/home/views/item_tile.dart';
 import 'package:challenge/screens/map/map.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:number_paginator/number_paginator.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,12 +37,22 @@ class _HomeScreenState extends State<HomeScreen> {
   /// An indicator that tells whether pagination was setup or not.
   bool didSetupPagination = false;
 
+  final ding = FavDing();
+
   @override
   void initState() {
     super.initState();
 
+    tz.initializeTimeZones();
+
     /// We will refresh our page on initialization.
     refreshPage();
+  }
+
+  @override
+  void dispose() {
+    ding.dispose();
+    super.dispose();
   }
 
   /// Refreshes orders based on [page] number.
@@ -156,14 +167,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .setFavoriteState(data.id, newState);
 
                             if (newState) {
-                              await FlutterLocalNotificationsPlugin().show(
+                              await NotificationService().showNotification(
                                   1,
                                   "Added order to favorites!",
-                                  "You've just added an order to your favorites list.",
-                                  const NotificationDetails(),
-                                  payload: 'data');
+                                  "You've just added order (${data.id}) to your favorites list.",
+                                  1);
                             } else {
-                              SystemSound.play(SystemSoundType.click);
+                              ding.play();
                             }
 
                             favorites[data.id] = newState;
